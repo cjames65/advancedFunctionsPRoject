@@ -11,7 +11,6 @@ function findAccountById(accounts, id) {
 function sortAccountsByLastName(accounts) {
   //sort method used to compare two objects at a time
   let acc = accounts.sort((accountA, accountB) => 
-
   /* toLowerCase method used to change string value of last name to lower case to help compare
   in the inline if statement. If -1 is returned then the first last name comes before the second. If 
   1 is returned then the second last name comes first. */
@@ -20,6 +19,7 @@ function sortAccountsByLastName(accounts) {
   return acc;
 }
 
+//getTotalNumberOfBorrows function takes in account object and book array
 function getTotalNumberOfBorrows(account, books) {
   // Initialize a variable to store the total number of borrows
   let totalBorrows = 0;
@@ -31,14 +31,16 @@ function getTotalNumberOfBorrows(account, books) {
     // Increment the totalBorrows count by the borrowCount for the current book
     totalBorrows += borrowCount;
   });
-  
   // Return the total number of borrows
   return totalBorrows;
 }
 
-
+//getBooksPossessedByAccount function takes in an account object, array of books and array of authors
 function getBooksPossessedByAccount(account, books, authors) {
-  // Filter the books array to find books currently checked out by the given account
+  /* Filter the books array to find books currently checked out by the given account. The filter method 
+    is used to iterate ver each book and check if the most recent borrow record matches the account taken 
+    in as the parameter.
+  */
   const borrowedBooks = books.filter(book =>
     // Check if the book's most recent borrow record matches the account's ID and is not returned
     book.borrows[0].id === account.id && !book.borrows[0].returned

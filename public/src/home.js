@@ -1,24 +1,24 @@
-// Function to get the total number of books
+// getTotalBooksCount function takes in books array
 function getTotalBooksCount(books) {
-  //returns the length of the array
+  //returns the length of the array since it is the total amount of books
   return books.length;
 }
 
-// Function to get the total number of accounts
+// getTotalAccountsCount function takes in accounts array 
 function getTotalAccountsCount(accounts) {
-  //returns the length of the array
+  //returns the length of the array since it is the total amount of accounts
   return accounts.length;
 }
 
-// Function to get the total number of borrowed books
+// getBooksBorrowedCount function takes in books array
 function getBooksBorrowedCount(books) {
-  // Filter borrowed books based on the 'borrows' array
+  // Filter method filters books array to include only those books that have not been returned
   const borrowedBooks = books.filter(book => !book.borrows[0].returned);
-  // Return the length of the filtered array
+  // Return the length of the filtered array since it is the total amount of books
   return borrowedBooks.length;
 }
 
-// Function to get the most common genres
+// getMostCommonGenres function takes in books array
 function getMostCommonGenres(books) {
   // Create an empty object to store the count of each genre
   const genreCounts = {};
@@ -42,7 +42,7 @@ function getMostCommonGenres(books) {
   return genresArray.slice(0, 5);
 }
 
-// Function to get the most popular books
+// getMostPopularBooks function takes in books function
 function getMostPopularBooks(books) {
   // Sort books by borrows count in descending order
   const sortedBooks = books.sort((a, b) => b.borrows.length - a.borrows.length);
@@ -50,7 +50,7 @@ function getMostPopularBooks(books) {
   return sortedBooks.slice(0, 5).map(book => ({ name: book.title, count: book.borrows.length }));
 }
 
-// Function to get the most popular authors
+// getMostPopularAuthors function to get the most popular authors
 function getMostPopularAuthors(books, authors) {
   // Create an object to store the borrows count for each author
   const authorBorrows = {};
